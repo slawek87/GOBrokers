@@ -18,7 +18,6 @@ type RealEstateModel struct {
 
 // Stores address information.
 type AddressModel struct {
-	ID       		int
 	City			string `gorm:"not null;"`
 	Street			string
 	District		string
