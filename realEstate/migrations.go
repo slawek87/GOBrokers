@@ -7,4 +7,6 @@ func InitMigrations() {
 	defer db.Close()
 
 	db.LogMode(true)
+	//db.AutoMigrate(&RealEstateModel{})
+	db.AutoMigrate(&AddressModel{})
 }

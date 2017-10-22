@@ -1,13 +1,13 @@
 package realEstate
 
-
 var TypeOfTransaction = map[string]string{"sell": "sell", "rent": "rent"}
 var PropertyType = map[string]string{"flatHouse": "flat house"}
 var Currency = map[string]string{"pln": "PLN"}
 
 // Stores all basic information about realEstate. This model must be only inheritance.
 type RealEstateModel struct {
-	AddressModel
+	Address     		AddressModel
+	AddressID			int
 
 	PropertyType		string       `gorm:"not null;"`
 
@@ -20,6 +20,8 @@ type RealEstateModel struct {
 
 // Stores address information.
 type AddressModel struct {
+	ID       		int
+
 	City			string `gorm:"not null;"`
 	Street			string
 	District		string
