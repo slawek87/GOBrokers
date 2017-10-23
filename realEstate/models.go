@@ -4,7 +4,8 @@ var TypeOfTransaction = map[string]string{"sell": "sell", "rent": "rent"}
 var PropertyType = map[string]string{"flatHouse": "flat house"}
 var Currency = map[string]string{"pln": "PLN"}
 
-// Stores all basic information about realEstate. This model must be only inheritance.
+// This is only Parent which should be inherited by child GORM structures.
+// In this structure include basic RealEstate fields.
 type RealEstateModel struct {
 	Address     		AddressModel
 	AddressID			int

@@ -23,12 +23,7 @@ func main()  {
 		District: "Sląskie",
 		Street: "Żorska"}
 
-	db.NewRecord(&address)
-	db.Create(&address)
-
 	basicRealEstate := realEstate.RealEstateModel{
-		Address: address,
-		AddressID: address.ID,
 		PropertyType: realEstate.PropertyType["flatHouse"],
 
 		TypeOfTransaction: realEstate.TypeOfTransaction["sell"],
@@ -46,13 +41,9 @@ func main()  {
 		BuildingMaterial: flatHouse.BuildingMaterial["brick"],
 		TypeOfBuildingStyle: flatHouse.TyepOfBuildingStyle["apartment"]}
 
+    controller := flatHouse.FlatHouseController{}
 
-	db.NewRecord(&flatHouseRecord)
-	db.Create(&flatHouseRecord)
+    record, _ := controller.CreateFlatHouseRecord(&flatHouseRecord, &address)
 
-	var u flatHouse.FlatHouseModel
-
-	db.Debug().Last(&u).Related(&u.Address, "Address")
-	fmt.Println(u.Address)
-
+    fmt.Println(record, record.Address)
 }
