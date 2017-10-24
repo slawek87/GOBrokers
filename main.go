@@ -46,4 +46,6 @@ func main()  {
     record, _ := controller.CreateFlatHouseRecord(&flatHouseRecord, &address)
 
     fmt.Println(record, record.Address)
+
+	flatHouse.IndexFlatHouse(record)
 }
