@@ -4,10 +4,12 @@ import (
 	elastic "gopkg.in/olivere/elastic.v5"
 	"time"
 	"strconv"
+	"strings"
 )
 
 func InitElasticSearch() *elastic.Client {
 	client, err := elastic.NewClient(
+		elastic.SetSniff(false),
 		elastic.SetURL(
 			Settings.Get("ELASTIC_SEARCH_URL")),
 		elastic.SetBasicAuth(
@@ -23,5 +25,5 @@ func InitElasticSearch() *elastic.Client {
 
 // function returns index name in pattern {name}_{Month}_{YYYY}
 func GetIndexName(name string) string {
-	return name + "_" + time.Now().Month().String() + "_" + strconv.Itoa(time.Now().Year())
+	return strings.ToLower(name + "_" + time.Now().Month().String() + "_" + strconv.Itoa(time.Now().Year()))
 }

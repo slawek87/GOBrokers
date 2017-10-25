@@ -13,6 +13,7 @@ func IndexFlatHouse(flathouse *FlatHouseModel)  {
 	client := settings.InitElasticSearch()
 	_, err := client.Index().
 	Index(settings.GetIndexName(INDEX_NAME)).
+	Type(flathouse.TypeOfBuildingStyle).
 	BodyJson(flathouse).
 	Do(context.Background())
 
