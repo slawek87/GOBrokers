@@ -17,6 +17,8 @@ type RealEstateModel struct {
 	Currency			string		 `gorm:"not null;"`
 
 	Description			string		 `gorm:"not null;"`
+
+	Elastic				bool		 `gorm:"not null;DEFAULT false;"`
 }
 
 // Stores address information.

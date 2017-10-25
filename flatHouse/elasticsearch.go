@@ -1,8 +1,7 @@
 package flatHouse
 
 import (
-	"github.com/slawek87/GOBrokers/settings"
-	"context"
+	"github.com/slawek87/GOBrokers/elastic"
 )
 
 const INDEX_NAME = "FlatHouse"
@@ -10,16 +9,7 @@ const INDEX_NAME = "FlatHouse"
 // Function indexes flat house data in elasticsearch.
 // Default index for flat house documents is FlatHouse_{Month}.{YYYY}
 func IndexFlatHouse(flathouse *FlatHouseModel)  {
-	client := settings.InitElasticSearch()
-	_, err := client.Index().
-	Index(settings.GetIndexName(INDEX_NAME)).
-	Type(flathouse.TypeOfBuildingStyle).
-	BodyJson(flathouse).
-	Do(context.Background())
-
-	if err != nil {
-		panic(err)
-	}
+	elastic.IndexDocument(flathouse, INDEX_NAME, flathouse.TypeOfBuildingStyle)
 }
 
 

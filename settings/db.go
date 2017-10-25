@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
     _ "github.com/jinzhu/gorm/dialects/mysql"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	elastic "gopkg.in/olivere/elastic.v5"
 )
 
 func InitDB() (*gorm.DB, error) {
@@ -17,4 +18,20 @@ func InitDB() (*gorm.DB, error) {
 	}
 
 	return db, nil
+}
+
+func InitElasticSearch() *elastic.Client {
+	client, err := elastic.NewClient(
+		elastic.SetSniff(false),
+		elastic.SetURL(
+			Settings.Get("ELASTIC_SEARCH_URL")),
+		elastic.SetBasicAuth(
+			Settings.Get("ELASTIC_SEARCH_USERNAME"),
+			Settings.Get("ELASTIC_SEARCH_PASSWORD")))
+
+	if err != nil {
+		panic(err)
+	}
+
+	return client
 }
