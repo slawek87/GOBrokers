@@ -47,5 +47,5 @@ func main()  {
 
     fmt.Println(record, record.Address)
 
-	flatHouse.IndexFlatHouse(record)
+	flatHouse.IndexFlatHouses()
 }
