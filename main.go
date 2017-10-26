@@ -4,7 +4,7 @@ import (
 	"github.com/slawek87/GOBrokers/realEstate"
 	"github.com/slawek87/GOBrokers/flatHouse"
 	"github.com/slawek87/GOBrokers/settings"
-	"fmt"
+	"github.com/slawek87/GOBrokers/elastic"
 )
 
 // Put here all methods and functions which you need to run before call main().
@@ -43,9 +43,9 @@ func main()  {
 
     controller := flatHouse.FlatHouseController{}
 
-    record, _ := controller.CreateFlatHouseRecord(&flatHouseRecord, &address)
-
-    fmt.Println(record, record.Address)
+    controller.CreateFlatHouseRecord(&flatHouseRecord, &address)
 
 	flatHouse.IndexFlatHouses()
+
+	elastic.IndexDocumentsTicker()
 }
