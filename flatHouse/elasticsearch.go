@@ -5,10 +5,10 @@ import (
 	"github.com/slawek87/GOBrokers/settings"
 )
 
-const INDEX_NAME = "FlatHouse"
+const INDEX_NAME = ".flathouse"
 
 // Function indexes flat house data in elasticsearch.
-// Default index for flat house documents is FlatHouse_{Month}.{YYYY}
+// Default index for flat house documents is .flathouse-{Month}-{YYYY}
 func IndexFlatHouses()  {
 	var flatHouses []FlatHouseModel
 

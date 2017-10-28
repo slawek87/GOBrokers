@@ -8,9 +8,9 @@ import (
 	"context"
 )
 
-// function returns index name in pattern {name}_{Month}_{YYYY}.
+// function returns index name in pattern {name}-{Month}-{YYYY}.
 func GetIndexName(name string) string {
-	return strings.ToLower(name + "_" + time.Now().Month().String() + "_" + strconv.Itoa(time.Now().Year()))
+	return strings.ToLower(name + "-" + time.Now().Month().String() + "-" + strconv.Itoa(time.Now().Year()))
 }
 
 // function indexes documents.
