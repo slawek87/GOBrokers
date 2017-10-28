@@ -17,10 +17,11 @@ func IndexFlatHouses()  {
 
 	db.Where("elastic = ?", false).Find(&flatHouses)
 
-	for _, flatHouse := range flatHouses {
-		db.Model(flatHouse).Update("elastic", true)
-        flatHouse.Elastic = true
-		elastic.IndexDocument(flatHouse, INDEX_NAME, flatHouse.TypeOfBuildingStyle)
+	for count, _ := range flatHouses {
+		db.Model(flatHouses[count]).Update("elastic", true)
+		db.Model(&flatHouses[count]).Related(&flatHouses[count].Address, "Address")
+        flatHouses[count].Elastic = true
+		elastic.IndexDocument(flatHouses[count], INDEX_NAME, flatHouses[count].TypeOfBuildingStyle)
 	}
 }
 
