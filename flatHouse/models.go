@@ -16,7 +16,7 @@ var BuildingMaterial = map[string]string {
 	"frameH": "frame H",
 	"suporex": "suporex"}
 
-var TyepOfBuildingStyle = map[string]string {
+var TypeOfBuildingStyle = map[string]string {
 	"apartment": "apartment",
 	"flat": "flat",
 	"multiFamilyHouse": "multi-family house",

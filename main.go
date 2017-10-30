@@ -39,7 +39,7 @@ func main()  {
 		NumberOfFloorsInBuilding: 5,
 		YearOfConstruction: 1980,
 		BuildingMaterial: flatHouse.BuildingMaterial["brick"],
-		TypeOfBuildingStyle: flatHouse.TyepOfBuildingStyle["apartment"]}
+		TypeOfBuildingStyle: flatHouse.TypeOfBuildingStyle["apartment"]}
 
     controller := flatHouse.FlatHouseController{}
 
